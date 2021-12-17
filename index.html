@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .block {
+        height: 60px;
+        width: 60px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(134deg, #ff006a, #ff8d00);
+        box-shadow: 6px 13px 20px #ff2d008a;
+        transition: all 1s ease;
+    }
+
+    .block .cta {
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+    }
+
+    .toggle-btn {
+        width: 38px;
+        height: 4px;
+        background: #fff;
+        position: relative;
+        top: 50%;
+        left: 0;
+        margin: auto;
+        transition: all 0.3s ease-in-out;
+        border-radius: 6px;
+    }
+    .toggle-btn::before{
+        content: "";
+        height: 4px;
+        width: 25px;
+        box-shadow: 0 -10px 0 0 #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.3s ease-in-out;
+        border-radius: 6px;
+    }
+    .toggle-btn::after{
+        content: "";
+        height: 4px;
+        width: 19px;
+        box-shadow: 0 10px 0 0 #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.3s ease-in-out;
+        border-radius: 6px;
+    }
+    .active .toggle-btn{
+        background: transparent;
+        transition: all 0.2s ease-in-out;
+    }
+    .active .toggle-btn::before,
+    .active .toggle-btn::after{
+        top: 0;
+        transition: all 0.3s ease-in-out;
+    }
+    .active .type1::before{
+        left: 8px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 36px;
+    }
+    .active .type1::after{
+        left: 8px;
+        transform: translateY(-8px) rotate(45deg);
+        width: 36px;
+    }
+</style>
+
+<body>
+    <div class="block">
+        <div class="cta">
+            <div class="toggle-btn type1"></div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+       $(document).on('click', '.cta', function () {
+           $(this).toggleClass('active')
+       })
+    });
+</script>
+</html>
